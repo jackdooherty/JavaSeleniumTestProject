@@ -1,23 +1,21 @@
 package Framework.pageObjects;
-
 import Framework.pageObjects.Utils.PropertiesUtil;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.Properties;
+import static Framework.pageObjects.Utils.GetBrowserUtil.getBrowserDriver;
 
 public class BaseClass {
 
     public static WebDriver driver;
+    static Properties properties = PropertiesUtil.loadApplicationProperties();
+    static Properties props = PropertiesUtil.loadFrameworkProperties();
 
-    public static void initializeChromeDriver()
+    public static void initializeDriver()
     {
-        Properties properties = PropertiesUtil.loadApplicationProperties();
         String url = properties.get("application.url").toString();
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        String browser = props.getProperty("browser.driver");
+
+        driver = getBrowserDriver(browser);
         driver.get(url);
         driver.manage().window().maximize();
     }

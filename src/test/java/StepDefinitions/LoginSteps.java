@@ -9,10 +9,11 @@ import java.util.Properties;
 
 public class LoginSteps {
 
-    Properties properties = PropertiesUtil.loadApplicationProperties();
+    Properties properties = PropertiesUtil.loadUserProperties();
 
     @Given("a user navigates to the login page")
     public void a_user_navigates_to_the_login_page() {
+        System.out.println("First step attempted");
         LoginPage.selectLogin();
     }
     @When("I provide valid login details")
@@ -23,7 +24,7 @@ public class LoginSteps {
     }
 
     @Then("I should successfully be able to login")
-    public void i_should_successfully_be_able_to_login() throws InterruptedException {
+    public void i_should_successfully_be_able_to_login() {
         LoginPage.submitLogin();
     }
 }
