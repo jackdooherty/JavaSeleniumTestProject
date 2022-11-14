@@ -30,6 +30,12 @@ public class GetBrowserUtil extends BaseClass {
         return driver;
     }
 
+    private static WebDriver setChromeDriver() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        return driver;
+    }
+
     private static WebDriver setIEDriver() {
         WebDriverManager.iedriver().setup();
         driver = new InternetExplorerDriver();
@@ -39,12 +45,6 @@ public class GetBrowserUtil extends BaseClass {
     private static WebDriver setFirefoxDriver() {
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
-        return driver;
-    }
-
-    private static WebDriver setChromeDriver() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
         return driver;
     }
 

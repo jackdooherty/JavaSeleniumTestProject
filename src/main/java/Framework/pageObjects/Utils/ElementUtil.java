@@ -1,22 +1,37 @@
 package Framework.pageObjects.Utils;
 
 import Framework.pageObjects.BaseClass;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.Properties;
 
-public class BrowserUtil extends BaseClass {
+public class ElementUtil extends BaseClass {
 
     static Properties properties = PropertiesUtil.loadFrameworkProperties();
+
+    public static void clickElementById(String element)
+    {
+        driver.findElement(By.id(element)).click();
+    }
+
+    public static void clickElementByXpath(String element)
+    {
+        driver.findElement(By.xpath(element)).click();
+    }
+
+    public static void enterTextById(String element, String text)
+    {
+        driver.findElement(By.id(element)).sendKeys(text);
+    }
+
+    public static void enterTextByXpath(String element, String text)
+    {
+        driver.findElement(By.xpath(element)).sendKeys(text);
+    }
 
     public static WebElement findAndWaitByID(String element)
     {

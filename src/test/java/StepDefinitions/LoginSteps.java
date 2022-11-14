@@ -13,7 +13,6 @@ public class LoginSteps {
 
     @Given("a user navigates to the login page")
     public void a_user_navigates_to_the_login_page() {
-        System.out.println("First step attempted");
         LoginPage.selectLogin();
     }
     @When("I provide valid login details")

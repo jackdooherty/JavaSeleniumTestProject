@@ -176,14 +176,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.paulhammant</groupId>
-            <artifactId>ngwebdriver</artifactId>
-            <version>1.2</version>
-            <!-- You might want to delete the following line if you get "package com.paulhammant.ngwebdriver does not exist" errors -->
-            <scope>test</scope>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>

@@ -1,6 +1,7 @@
 package Framework.pageObjects.PageObjects;
 
 import Framework.pageObjects.BaseClass;
+import Framework.pageObjects.Utils.ElementUtil;
 import org.checkerframework.checker.signature.qual.FullyQualifiedName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,50 +9,41 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.text.Element;
 import java.time.Duration;
 
 import static Framework.pageObjects.BaseClass.driver;
 
 public class LoginPage extends BaseClass
 {
+    //id
+    private static String emailAddress = "input-email";
+    private static String password = "input-password";
 
-    @FindBy(id = "input-email")
-    private static WebElement emailAddress;
-
-    @FindBy(id = "input-password")
-    private static WebElement password;
-
-    @FindBy(xpath = "input[value='Login']")
-    private static WebElement submitLogin;
-
-    @FindBy(xpath = "//span[text()='My Account')]")
-    private static WebElement myAccount;
-
-    @FindBy(xpath = "//a[text()='Login')]")
-    private static WebElement loginBtn;
-
-    @FindBy(xpath = "//h2[text()='My Account')]]")
-    private static WebElement myAccountText;
+    //xpath
+    private static String submitLogin = "//input[@class='btn btn-primary']";
+    private static String myAccount = "//span[text()='My Account']";
+    private static String loginBtn = "//a[text()='Login']";
+    private static String myAccountText = "//h2[text()='My Account']";
 
     public static void selectLogin()
     {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(myAccount));
-        myAccount.click();
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(loginBtn));
-        loginBtn.click();
+        ElementUtil.findAndWaitByXpath(myAccount);
+        ElementUtil.clickElementByXpath(myAccount);
+        ElementUtil.findAndWaitByXpath(loginBtn);
+        ElementUtil.clickElementByXpath(loginBtn);
     }
 
     public static void provideValidLoginDetails(String emailAddressValue, String passwordValue) throws InterruptedException {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(emailAddress));
-        emailAddress.sendKeys(emailAddressValue);
-        password.sendKeys(passwordValue);
-        Thread.sleep(2000);
+        ElementUtil.findAndWaitByID(emailAddress);
+        ElementUtil.enterTextById(emailAddress, emailAddressValue);
+        ElementUtil.enterTextById(password, passwordValue);
     }
 
     public static void submitLogin()
     {
-        submitLogin.click();
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(myAccountText));
+        ElementUtil.clickElementByXpath(submitLogin);
+        ElementUtil.findAndWaitByXpath(myAccountText);
     }
 
 }

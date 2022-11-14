@@ -1,8 +1,6 @@
 Feature: Login
 
-  Background: Navigate to homepage
-    Given a user opens the test homepage
-
   Scenario: As a user I want to login successfully
-    And I arrive successfully on the home page
+    Given a user navigates to the login page
+    When I provide valid login details
     Then I should successfully be able to login
